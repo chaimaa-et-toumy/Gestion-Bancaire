@@ -6,7 +6,8 @@ struct Comptes_Bancaires {
 	char prenom[50];
 	float montant;
 };
-struct Comptes_Bancaires compte[1000];
+int max = 10000;
+
 int i;
 void menu_principal()
 {
@@ -19,8 +20,22 @@ void menu_principal()
     printf("  --> Pour quitter, inserer 6 ......................................\n");
     printf("\n");
 }
-void preson1(){
-		printf("\t\t\t****************** Creer votre Compte ******************\n");
+
+
+int main() {
+	menu_principal();
+	struct Comptes_Bancaires compte[max];
+	int n,i=0;
+	int choix;
+	
+	printf(" Choisissez un nombre de 1 a 6 : ");
+	scanf("%d",&n);
+	
+	while (n != 6)
+	{
+		switch (n) {
+			case 1 : // cin //nom et prenom // montant
+			      	printf("\t\t\t****************** Creer le Compte ******************\n");
 					printf("   Entrez le cin du client : ");
 					scanf("%s",compte[i].cin);
 					printf("   Entrez le nom du client  : ");
@@ -30,9 +45,13 @@ void preson1(){
 					printf("   Entrer le montant du client: ");
 					scanf("%f",&compte[i].montant);
 					printf("   le compte a ete cree avec succes\n\n");
-}
-void plusieurs(){
-  					int n;
+					 i++;
+                    if (i > max - 1) {
+                        i = 0;
+                        printf("le stockage est saturé les anciennes informations seront supprimées!");
+                    }
+				    break;
+			case 2 :
                     printf("   Entrez le cin du client : ");
 					scanf("%s",compte[i].cin);
 					printf("   Entrez le nom du client  : ");
@@ -42,11 +61,17 @@ void plusieurs(){
 					printf("   Entrer le montant du client: ");
 					scanf("%f",&compte[i].montant);
 					printf("   le compte a ete cree avec succes\n\n");
-					printf("entrer 1 pour saisir autre personne ou 2 pour retourner au menu principale :");
-                    scanf("%d", &n);
-				    while (n != 2)
+					 i++;
+                    if (i > max - 1) {
+                        i = 0;
+                        printf("le stockage est saturé les anciennes informations seront supprimées!");
+                    }
+				
+					printf("entrer 1 pour saisir autre personne ou 2 pour retourner au menu principale : ");
+                    scanf("%d", &choix);
+				    while (choix != 2)
                     {
-                        if (n == 1) {
+                        if (choix == 1) {
 						printf("   Entrez le cin du client : ");
 						scanf("%s",compte[i].cin);
 						printf("   Entrez le nom du client  : ");
@@ -55,28 +80,16 @@ void plusieurs(){
 					    scanf("%s",compte[i].prenom);
 					    printf("   Entrer le montant du client: ");
 					    scanf("%f",&compte[i].montant);
+					     if (i > max - 1) {
+                        i = 0;
+                        printf("le stockage est saturé les anciennes informations seront supprimées!");
+                   		 }
 				    	}
-						else 
-                            printf("L'option n'existe pas \n");
-                        
-   					}
-
-}
-int main() {
-	menu_principal();
-	int n,i=0;
-	
-	printf(" Choisissez un nombre de 1 a 6 : ");
-	scanf("%d",&n);
-	
-	while (n != 6)
-	{
-		switch (n) {
-			case 1 : // cin //nom et prenom // montant
-			        preson1();
-				    break;
-			case 2 :
-					plusieurs();
+						else {
+                            printf("L'option n'existe pas \n"); }
+                            printf("entrer 1 pour saisir autre personne ou 2 pour retourner au menu principale : ");
+                    		scanf("%d", &choix);
+                    }
 					break;
 			default :
 					printf("Operation n'existe pas  \n\n");
