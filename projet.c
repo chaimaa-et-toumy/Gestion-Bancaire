@@ -44,6 +44,61 @@ void menu_principal()
     printf("  --> Pour quitter, inserer 6 ......................................\n");
     printf("\n");
 }
+void	affiche_ascendant(int total)
+{
+	int i;
+	int j;
+	struct Comptes_Bancaires  tmp;
+
+	for (i = 0; i < total; ++i) 
+	{
+
+		for (j = i + 1; j < total; ++j)
+		{
+
+			if (compte[i].montant > compte[j].montant) 
+			{
+				tmp = compte[i];
+				compte[i] = compte[j];
+				compte[j] = tmp;
+			}
+
+		}
+}
+        for (i = 0; i < total; i++) {
+		printf("le cin: %s, le montant : %.2f, le nom : %s\n",
+			compte[i].cin,compte[i].montant,compte[i].nom);
+	}
+	}
+	void	affiche_descendant(int total)
+{
+	int i;
+	int j;
+	struct Comptes_Bancaires tmp;
+
+	for (i = 0; i < total; ++i) 
+	{
+
+		for (j = i + 1; j < total; ++j)
+		{
+
+			if (compte[i].montant < compte[j].montant) 
+			{
+				tmp = compte[i];
+				compte[i] = compte[j];
+				compte[j] = tmp;
+			}
+
+		}
+
+	}
+
+	for (i = 0; i < total; i++) {
+		printf("le cin: %s, le montant : %.2f, le nom : %s\n",
+			compte[i].cin,compte[i].montant,compte[i].nom);
+	}
+
+}
 
 
 int main() {
@@ -53,6 +108,7 @@ int main() {
 	int choix,choix3,choix4;
 	char rech_cin[20];
 	float montantEntree;
+
 	
 	printf(" Choisissez un nombre de 1 a 6 : ");
 	scanf("%d",&n);
@@ -180,6 +236,19 @@ int main() {
 				    affichage();
 				    printf("entrer votre choix : ");
 				    scanf("%d",&choix4);
+				    if (choix4 == 1)
+			 		{
+                        
+                        affiche_ascendant(total);
+				    
+					}
+					else if (choix4 == 2)
+					{
+					    affiche_descendant(total);
+					}
+				
+						
+		
 					break;
 			default :
 					printf("Operation n'existe pas  \n\n");
