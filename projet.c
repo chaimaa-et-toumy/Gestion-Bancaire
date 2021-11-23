@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 struct Comptes_Bancaires {
 	char cin[20];
 	char nom[50];
@@ -35,7 +36,8 @@ int main() {
 	{
 		switch (n) {
 			case 1 : // cin //nom et prenom // montant
-			      	printf("\t\t\t****************** Creer le Compte ******************\n");
+			    	system("cls");
+			      	printf("\n\t\t\t****************** Creer le Compte ******************\n");
 					printf("   Entrez le cin du client : ");
 					scanf("%s",compte[i].cin);
 					printf("   Entrez le nom du client  : ");
@@ -45,11 +47,14 @@ int main() {
 					printf("   Entrer le montant du client: ");
 					scanf("%f",&compte[i].montant);
 					printf("   le compte a ete cree avec succes\n\n");
+								       
+
 					 i++;
                     if (i > max - 1) {
                         i = 0;
                         printf("le stockage est saturé les anciennes informations seront supprimées!");
                     }
+                  
 				    break;
 			case 2 :
                     printf("   Entrez le cin du client : ");
