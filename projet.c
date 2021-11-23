@@ -9,6 +9,7 @@ struct Comptes_Bancaires {
 };
 int max = 1000;
 struct Comptes_Bancaires compte[1000];
+
 int    recherche_cin(){
     char cin[20];
     int i;
@@ -16,13 +17,21 @@ int    recherche_cin(){
     scanf("%s",cin);
     for(i = 0;i<sizeof(max);i++)
     {
-        if(strstr(cin,compte[i].cin))
+        if(strcmp(cin,compte[i].cin)==0)
         {
             return i;
         }
     }
 }
-
+void affichage ()
+{
+	                printf("\n\t\t\t\t===================Affichage===================\n");
+				    printf("1 pour ordre ascendant\n");
+				    printf("2 pour ordre descendant\n");
+				    printf("3 pour ordre ascendant et superieur a un chiffre\n");
+				    printf("4 pour ordre descendant et superieur a un chiffre\n");
+				    printf("5 pour rechercher avec cin\n");
+}
 int i;
 void menu_principal()
 {
@@ -41,7 +50,7 @@ int main() {
 	menu_principal();
 	//struct Comptes_Bancaires compte[max];
 	int n,i=0,ind_cin,total=0;
-	int choix,choix3;
+	int choix,choix3,choix4;
 	char rech_cin[20];
 	float montantEntree;
 	
@@ -126,29 +135,32 @@ int main() {
                    }
 					break;
 			case 3 :
-                                system("cls");
-                                printf("les operations : ");
-			            	    printf("Entrer 1 pour Retrait ou 2 pour Depot ou 3 pour annuler : ");
-			  					scanf("%d", &choix3);
-			    	if (choix3 == 1)
-			       	{	
-						// idice de compte
-						ind_cin = recherche_cin();
-	                    printf("\n%s %s %s %f\n",compte[ind_cin].cin,compte[ind_cin].nom,compte[ind_cin].prenom,compte[ind_cin].montant);
-								// montant a retire
-					    printf("Entrer le montant :");
-					    scanf("%f", &montantEntree);
-
-										if (montantEntree > compte[ind_cin].montant)
-										printf("Montant invalide!\n");
-
-										else {
-										compte[ind_cin].montant -= montantEntree;
-										printf("Termine avec succes \n");
-										}
-	                    printf("\n%s %s %s %f\n",compte[ind_cin].cin,compte[ind_cin].nom,compte[ind_cin].prenom,compte[ind_cin].montant);
+                    system("cls");
+		            printf("les operations : ");
+				    printf("Entrer 1 pour Retrait ou 2 pour Depot ou 3 pour annuler : ");
+					scanf("%d", &choix3);
+					if (choix3 == 1)
+				    {
+					ind_cin = recherche_cin();
+					if (ind_cin != 0)
+					{
+						printf("Le cin n'existe pas \n");
+					}
+					else {
+				
+	                printf("\n%s %s %s %f\n",compte[ind_cin].cin,compte[ind_cin].nom,compte[ind_cin].prenom,compte[ind_cin].montant);
+                    printf("Entrer le montant :");
+					scanf("%f", &montantEntree);
+					if (montantEntree > compte[ind_cin].montant)
+					printf("Montant invalide!\n");
+					else {
+					compte[ind_cin].montant -= montantEntree;
+					printf("Termine avec succes \n");
+					}
+	                printf("\n%s %s %s %f\n",compte[ind_cin].cin,compte[ind_cin].nom,compte[ind_cin].prenom,compte[ind_cin].montant);
 
 			    	}
+			    }
 			  		else if (choix3 == 2)
 				   {
 				        ind_cin = recherche_cin();
@@ -161,7 +173,13 @@ int main() {
 								printf("\n%s %s %s %f\n",compte[ind_cin].cin,compte[ind_cin].nom,compte[ind_cin].prenom,compte[ind_cin].montant);
 										
 					
-					}
+			    	}
+			    	break;
+			case 4 :
+				    system("cls");
+				    affichage();
+				    printf("entrer votre choix : ");
+				    scanf("%d",&choix4);
 					break;
 			default :
 					printf("Operation n'existe pas  \n\n");
