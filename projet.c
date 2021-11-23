@@ -57,7 +57,9 @@ int main() {
                   
 				    break;
 			case 2 :
-                    printf("   Entrez le cin du client : ");
+                                        system("cls");
+				        printf("\n\t\t\t****************** Creer le Compte ******************\n");
+                                        printf("   Entrez le cin du client : ");
 					scanf("%s",compte[i].cin);
 					printf("   Entrez le nom du client  : ");
 					scanf("%s",compte[i].nom);
