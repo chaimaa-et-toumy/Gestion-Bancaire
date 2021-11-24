@@ -53,10 +53,10 @@ void affiche_ascendant(int total)
 	int j;
 	struct Comptes_Bancaires tmp;
 
-	for (i = 0; i < total; ++i)
+	for (i = 0; i < total; i++)
 	{
 
-		for (j = i + 1; j < total; ++j)
+		for (j = i + 1; j < total; j++)
 		{
 
 			if (compte[i].montant > compte[j].montant)
@@ -79,10 +79,10 @@ void aff_desc(int total)
 	int j;
 	struct Comptes_Bancaires tmp;
 
-	for (i = 0; i < total; ++i)
+	for (i = 0; i < total; i++)
 	{
 
-		for (j = i + 1; j < total; ++j)
+		for (j = i + 1; j < total; j++)
 		{
 
 			if (compte[i].montant < compte[j].montant)
@@ -100,10 +100,10 @@ void affiche_descendant(int total)
 	int j;
 	struct Comptes_Bancaires tmp;
 
-	for (i = 0; i < total; ++i)
+	for (i = 0; i < total; i++)
 	{
 
-		for (j = i + 1; j < total; ++j)
+		for (j = i + 1; j < total; j++)
 		{
 
 			if (compte[i].montant < compte[j].montant)
@@ -155,12 +155,12 @@ int main()
 				if (i > max - 1)
 				{
 					i = 0;
-					printf("le stockage est saturÃ© les anciennes informations seront supprimÃ©es!");
+					printf("le stockage est saturee les anciennes informations seront supprimes!");
 				}
 				total++; // 1000
 				if (total > max)
 					total = max; // ex max = 999
-
+                
 				break;
 
 			case 2:
@@ -237,7 +237,7 @@ int main()
 				{
 					ind_cin = recherche_cin();
 
-					if (ind_cin != 0)
+					if (ind_cin == -1)
 					{
 						printf("Le cin n'existe pas \n");
 					}
@@ -247,7 +247,7 @@ int main()
 						printf("\n%s %s %s %f\n", compte[ind_cin].cin, compte[ind_cin].nom, compte[ind_cin].prenom, compte[ind_cin].montant);
 						printf("Entrer le montant :");
 						scanf("%f", &montantEntree);
-						if (montantEntree > compte[ind_cin].montant)
+						if (montantEntree > compte[ind_cin].montant || montantEntree < 0)
 							printf("Montant invalide!\n");
 
 						else
@@ -267,9 +267,15 @@ int main()
 
 					printf("Entrer le montant :");
 					scanf("%f", &montantEntree);
+					if(montantEntree >  0)
+					{
 					compte[ind_cin].montant += montantEntree;
 					printf("Termine avec succes \n");
 					printf("\n%s %s %s %f\n", compte[ind_cin].cin, compte[ind_cin].nom, compte[ind_cin].prenom, compte[ind_cin].montant);
+			     	}
+			     	else {
+			     		printf("Montant invalid !");
+					 }
 				}
 				break;
 
@@ -293,17 +299,16 @@ int main()
 				{
 
 					float montant;
-					struct Comptes_Bancaires tmp;
 					int j;
 
 					printf("entrer le montant : ");
 					scanf("%f", &montant);
-					// affiche_ascendant(total);
+
 					aff_desc(total);
 
 					for (i = 0; i < total; i++)
 					{
-						if (compte[i].montant < montant)
+						if (compte[i].montant > montant)
 						{
 							printf(" le cin est : %s\n", compte[i].cin);
 							printf("le nom est : %s\n", compte[i].nom);
@@ -315,12 +320,10 @@ int main()
 				else if (choix4 == 4)
 				{
 					float montant;
-					struct Comptes_Bancaires tmp;
 					int j;
 
 					printf("entrer le montant : ");
 					scanf("%f", &montant);
-					// affiche_ascendant(total);
 					aff_desc(total);
 
 					for (i = 0; i < total; i++)
@@ -356,23 +359,7 @@ int main()
 				printf("\n\t\t\t*******************Fidelisation***********************");
 
 				int j;
-				struct Comptes_Bancaires tmp;
-
-				for (i = 0; i < total; ++i)
-				{
-
-					for (j = i + 1; j < total; ++j)
-					{
-
-						if (compte[i].montant < compte[j].montant)
-						{
-							tmp = compte[i];
-							compte[i] = compte[j];
-							compte[j] = tmp;
-						}
-					}
-				}
-
+			    aff_desc(total);
 				for (i = 0; i < 3; i++)
 				{
 					printf("\n le cin est : %s | le nom est : %s | le prenom est : %s | le montant est :  %f\n", compte[i].cin, compte[i].nom, compte[i].prenom, compte[i].montant = compte[i].montant * 1.03);
