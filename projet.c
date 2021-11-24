@@ -32,6 +32,7 @@ void affichage ()
 				    printf("4 pour ordre descendant et superieur a un chiffre\n");
 				    printf("5 pour rechercher avec cin\n");
 }
+
 int i;
 void menu_principal()
 {
@@ -339,6 +340,30 @@ int main() {
 			case 5 :
 				system("cls");
 				printf("\n\t\t\t*******************Fidelisation***********************");
+				int j;
+				struct Comptes_Bancaires  tmp;
+					for (i = 0; i < total; ++i) 
+					{
+
+					for (j = i + 1; j < total; ++j)
+					{
+
+					if (compte[i].montant < compte[j].montant) 
+					{
+						tmp = compte[i];
+						compte[i] = compte[j];
+						compte[j] = tmp;
+					}
+
+						}
+				
+					}
+
+			
+		  		for(i=0;i<3;i++)
+		     	{
+			 printf("\n le cin est : %s | le nom est : %s | le prenom est : %s | le montant est :  %f\n",compte[i].cin,compte[i].nom,compte[i].prenom,compte[i].montant=compte[i].montant * 1.03 );
+		     	}
 				
 				break;
 			default :
