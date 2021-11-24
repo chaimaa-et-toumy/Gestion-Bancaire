@@ -70,6 +70,29 @@ void	affiche_ascendant(int total)
 			compte[i].cin,compte[i].montant,compte[i].nom);
 	}
 	}
+void	aff_desc(int total)
+{
+	int i;
+	int j;
+	struct Comptes_Bancaires tmp;
+
+	for (i = 0; i < total; ++i) 
+	{
+
+		for (j = i + 1; j < total; ++j)
+		{
+
+			if (compte[i].montant < compte[j].montant) 
+			{
+				tmp = compte[i];
+				compte[i] = compte[j];
+				compte[j] = tmp;
+			}
+
+		}
+
+	}
+}
 	void	affiche_descendant(int total)
 {
 	int i;
@@ -133,7 +156,7 @@ int main() {
                     if (i > max - 1) 
 					{
 					i = 0;
-                    printf("le stockage est saturé les anciennes informations seront supprimées!");
+                    printf("le stockage est saturÃ© les anciennes informations seront supprimÃ©es!");
                     }
                     total++; // 1000
 			        if (total > max)
@@ -155,7 +178,7 @@ int main() {
                     i++;
                     if (i > max - 1) {
                    	i = 0;
-                    printf("\t le stockage est saturé les anciennes informations seront supprimées!");
+                    printf("\t le stockage est saturÃ© les anciennes informations seront supprimÃ©es!");
                                          }
                     total++; 
 				    if (total > max)
@@ -177,7 +200,7 @@ int main() {
 					if (i > max - 1)
 				    {
                      i = 0;
-                     printf("le stockage est saturé les anciennes informations seront supprimées!");
+                     printf("le stockage est saturÃ© les anciennes informations seront supprimÃ©es!");
                      }
                    	 total++; 
 				      if (total > max)
@@ -188,6 +211,7 @@ int main() {
 				            }
                     printf("entrer 1 pour saisir autre personne ou 2 pour retourner au menu principale : ");
                   	scanf("%d", &choix);
+                  	
                    }
 					break;
 			case 3 :
@@ -246,6 +270,56 @@ int main() {
 					{
 					    affiche_descendant(total);
 					}
+					else if (choix4 == 3)
+					{
+					     
+						 float montant;
+						 struct Comptes_Bancaires tmp;
+						 int j;
+						 printf("entrer le montant : ");
+						 scanf("%f",&montant);
+						// affiche_ascendant(total);
+					   	aff_desc(total);
+
+						    for(i=0;i<total;i++)
+						 {
+						 	if(compte[i].montant < montant)
+						 	{
+						 			printf(" le cin est : %s\n",compte[i].cin);
+						 			printf("le nom est : %s\n",compte[i].nom);
+						 			printf("le prenom est : %s\n",compte[i].prenom);
+						 			printf("le montant est %f\n",compte[i].montant);
+						 		
+										
+							}
+						 }
+						 	 
+				    
+					}
+					else if (choix4 == 4)
+					{
+						float montant;
+						 struct Comptes_Bancaires tmp;
+						 int j;
+						 printf("entrer le montant : ");
+						 scanf("%f",&montant);
+						// affiche_ascendant(total);
+					   	aff_desc(total);
+
+						    for(i=0;i<total;i++)
+						 {
+						 	if(compte[i].montant > montant)
+						 	{
+						 			printf(" le cin est : %s\n",compte[i].cin);
+						 			printf("le nom est : %s\n",compte[i].nom);
+						 			printf("le prenom est : %s\n",compte[i].prenom);
+						 			printf("le montant est %f\n",compte[i].montant);
+						 		
+										
+							}
+						 }
+						
+					}
 				    else if (choix4 == 5)
 					{
 					ind_cin = recherche_cin();
@@ -257,14 +331,16 @@ int main() {
 				
 	                printf("\n le cin est : %s | le nom est : %s | le prenom est : %s | le montant est :  %f\n",compte[ind_cin].cin,compte[ind_cin].nom,compte[ind_cin].prenom,compte[ind_cin].montant);
 					}
-				}
+			    	}
 				
 						
 		
 					break;
-			/*case 5 :
+			case 5 :
+				system("cls");
+				printf("\n\t\t\t*******************Fidelisation***********************");
 				
-				break;*/ 
+				break;
 			default :
 					printf("Operation n'existe pas  \n\n");
 					break;
@@ -273,7 +349,6 @@ int main() {
 	printf("Choisissez un nombre de 1 a 6 : ");
 	scanf("%d",&n);
 	}
-	printf(" Operation terminee ");
+	printf(" Operation terminee , Merci ! ");
 	return 0;
 }
-
