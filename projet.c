@@ -133,7 +133,7 @@ int main() {
                     if (i > max - 1) 
 					{
 					i = 0;
-                    printf("le stockage est saturÃ© les anciennes informations seront supprimÃ©es!");
+                    printf("le stockage est saturé les anciennes informations seront supprimées!");
                     }
                     total++; // 1000
 			        if (total > max)
@@ -155,7 +155,7 @@ int main() {
                     i++;
                     if (i > max - 1) {
                    	i = 0;
-                    printf("\t le stockage est saturÃ© les anciennes informations seront supprimÃ©es!");
+                    printf("\t le stockage est saturé les anciennes informations seront supprimées!");
                                          }
                     total++; 
 				    if (total > max)
@@ -177,7 +177,7 @@ int main() {
 					if (i > max - 1)
 				    {
                      i = 0;
-                     printf("le stockage est saturÃ© les anciennes informations seront supprimÃ©es!");
+                     printf("le stockage est saturé les anciennes informations seront supprimées!");
                      }
                    	 total++; 
 				      if (total > max)
@@ -246,10 +246,25 @@ int main() {
 					{
 					    affiche_descendant(total);
 					}
+				    else if (choix4 == 5)
+					{
+					ind_cin = recherche_cin();
+					if (ind_cin != 0)
+					{
+						printf("Le cin n'existe pas \n");
+					}
+					else {
+				
+	                printf("\n le cin est : %s | le nom est : %s | le prenom est : %s | le montant est :  %f\n",compte[ind_cin].cin,compte[ind_cin].nom,compte[ind_cin].prenom,compte[ind_cin].montant);
+					}
+				}
 				
 						
 		
 					break;
+			/*case 5 :
+				
+				break;*/ 
 			default :
 					printf("Operation n'existe pas  \n\n");
 					break;
@@ -261,3 +276,4 @@ int main() {
 	printf(" Operation terminee ");
 	return 0;
 }
+
