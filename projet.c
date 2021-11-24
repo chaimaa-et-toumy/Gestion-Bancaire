@@ -15,7 +15,7 @@ int    recherche_cin(){
     int i;
     printf("donner cin : ");
     scanf("%s",cin);
-    for(i = 0;i<sizeof(max);i++)
+    for(i = 0;i<max;i++)
     {
         if(strcmp(cin,compte[i].cin)==0)
         {
